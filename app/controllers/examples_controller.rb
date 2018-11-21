@@ -20,7 +20,9 @@ class ExamplesController < OpenReadController
   # POST /examples
   # POST /examples.json
   def create
+    # TOKEN looks up current user
     @example = current_user.examples.build(example_params)
+    # example with user_id automatically filled in
 
     if @example.save
       render json: @example, status: :created
@@ -34,6 +36,7 @@ class ExamplesController < OpenReadController
   def update
     if @example.update(example_params)
       render json: @example
+      # Anytime you use render json it is going through the serializer
     else
       render json: @example.errors, status: :unprocessable_entity
     end
@@ -48,6 +51,7 @@ class ExamplesController < OpenReadController
   end
 
   def set_example
+    # Only look up examples that correspond to current user.
     @example = current_user.examples.find(params[:id])
   end
 
