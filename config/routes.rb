@@ -2,6 +2,7 @@
 
 Rails.application.routes.draw do
   resources :inventories, except: %i[new edit]
+  resources :brands, except: %i[new edit]
   # RESTful routes
   resources :examples, except: %i[new edit]
 
