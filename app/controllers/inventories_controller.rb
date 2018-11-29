@@ -1,4 +1,4 @@
-class InventoriesController < ApplicationController
+class InventoriesController < ProtectedController
   before_action :set_inventory, only: [:show, :update, :destroy]
 
   # GET /inventories
@@ -15,7 +15,7 @@ class InventoriesController < ApplicationController
 
   # POST /inventories
   def create
-    @inventory = Inventory.new(inventory_params)
+    @inventory = current_user.inventories.build(inventory_params)
 
     if @inventory.save
       render json: @inventory, status: :created, location: @inventory
@@ -41,7 +41,7 @@ class InventoriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_inventory
-      @inventory = Inventory.find(params[:id])
+      @inventory = current_user.inventories.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
