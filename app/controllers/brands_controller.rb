@@ -1,4 +1,4 @@
-class BrandsController < ApplicationController
+class BrandsController < ProtectedController
   before_action :set_brand, only: [:show, :update, :destroy]
 
   # GET /brands
@@ -15,7 +15,7 @@ class BrandsController < ApplicationController
 
   # POST /brands
   def create
-    @brand = Brand.new(brand_params)
+    @brand = current_user.brands.new(brand_params)
 
     if @brand.save
       render json: @brand, status: :created, location: @brand

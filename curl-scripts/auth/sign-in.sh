@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# EMAIL="suphomie@homie.com" PASSWORD="suphomie" sh curl-scripts/auth/sign-in.sh
+# EMAIL="sup@sup.com" PASSWORD="sup" sh curl-scripts/auth/sign-in.sh
 
 curl "http://localhost:4741/sign-in" \
   --include \
