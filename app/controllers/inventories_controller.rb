@@ -1,5 +1,5 @@
 class InventoriesController < ProtectedController
-  before_action :set_inventory, only: [:show, :update, :destroy]
+  before_action :set_inventory, only: %i[show update destroy]
 
   # GET /inventories
   def index

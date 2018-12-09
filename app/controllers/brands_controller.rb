@@ -1,5 +1,5 @@
 class BrandsController < ProtectedController
-  before_action :set_brand, only: [:show, :update, :destroy]
+  before_action :set_brand, only: %i[show update destroy]
 
   # GET /brands
   def index
